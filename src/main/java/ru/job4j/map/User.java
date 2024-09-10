@@ -1,7 +1,6 @@
 package ru.job4j.map;
 
 import java.util.*;
-import java.util.random.RandomGenerator;
 
 public class User {
     private String name;
@@ -28,7 +27,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        return RandomGenerator.getDefault().hashCode();
+        return Objects.hash(name, children, birthday);
     }
 
     public static void main(String[] args) {
@@ -39,9 +38,8 @@ public class User {
         map.put(user2, new Object());
         System.out.println(map);
         /**
-         * 6.1 Пары попали в разные бакеты, потому что у ключей разные хеш-коды.
-         * 6.2 Проверка ключей на равенство их хеш-кодов проводилась, т.к. пары попали в разные бакеты.
-         * 6.3 Проверка на equals() не проводилась.
+         * Т.к. мы переопределилил и Equals() и HashCode(), то в данном случаи будут две одинаковые пары,
+         * хеш-коды равны, метод Equals() вернет true. Следоватальено в консоль будет выведена только одна пара.
          */
     }
 }
