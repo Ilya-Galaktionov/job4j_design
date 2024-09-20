@@ -20,6 +20,7 @@ public class SimpleTree<E> implements Tree<E> {
             if (c.isEmpty()) {
                 Node<E> newChild = new Node<>(child);
                 p.get().children.add(newChild);
+                result = true;
             }
         }
         return result;
