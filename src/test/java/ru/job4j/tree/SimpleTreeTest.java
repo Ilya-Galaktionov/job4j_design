@@ -33,4 +33,26 @@ public class SimpleTreeTest {
         tree.add(5, 6);
         assertThat(tree.add(2, 6)).isFalse();
     }
+
+    @Test
+    void when3ElOfOneParentThenNotBinary() {
+        SimpleTree<Integer> tree = new SimpleTree<>(1);
+        tree.add(1, 2);
+        tree.add(1, 3);
+        tree.add(1, 4);
+        tree.add(4, 5);
+        tree.add(5, 6);
+        assertThat(tree.isBinary()).isFalse();
+    }
+    @Test
+    void when2ElOfOneParentThenBinary() {
+        SimpleTree<Integer> tree = new SimpleTree<>(1);
+        tree.add(1, 2);
+        tree.add(1, 3);
+        tree.add(2, 4);
+        tree.add(2, 5);
+        tree.add(3, 6);
+        tree.add(3, 7);
+        assertThat(tree.isBinary()).isTrue();
+    }
 }
