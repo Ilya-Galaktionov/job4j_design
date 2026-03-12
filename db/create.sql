@@ -1,17 +1,21 @@
-CREATE TABLE users(
+CREATE TABLE categories(
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
-    roles_id INT REFERENCES roles(id)
+    name TEXT
+);
+
+CREATE TABLE states(
+    id SERIAL PRIMARY KEY,
+    name TEXT
 );
 
 CREATE TABLE roles(
     id SERIAL PRIMARY KEY,
-    name text
+    name TEXT
 );
 
 CREATE TABLE rules(
     id SERIAL PRIMARY KEY,
-    name text
+    name TEXT
 );
 
 CREATE TABLE roles_rules(
@@ -20,7 +24,13 @@ CREATE TABLE roles_rules(
     rules_id INT REFERENCES rules(id)
 );
 
-    CREATE TABLE items(
+CREATE TABLE users(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    roles_id INT REFERENCES roles(id)
+);
+
+CREATE TABLE items(
     id SERIAL PRIMARY KEY,
     name TEXT,
     users_id INT REFERENCES users(id),
@@ -38,14 +48,4 @@ CREATE TABLE attachs(
     id SERIAL PRIMARY KEY,
     name TEXT,
     items_id INT REFERENCES items(id)
-);
-
-CREATE TABLE categories(
-    id SERIAL PRIMARY KEY,
-    name TEXT
-);
-
-CREATE TABLE states(
-    id SERIAL PRIMARY KEY,
-    name TEXT
 );
